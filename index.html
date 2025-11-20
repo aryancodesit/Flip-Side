@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flip Side - Reverse Singing Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;800&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <header>
+            <div class="logo-container">
+                <img src="logo.png" alt="Flip Side Logo" class="app-logo">
+                <h1>Flip Side</h1>
+            </div>
+            <button id="theme-toggle" class="icon-btn" aria-label="Toggle Theme">
+                <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+        </header>
+
+        <main>
+            <!-- Stage 1: Intro -->
+            <section id="stage-intro" class="stage active">
+                <div class="card">
+                    <h2>Welcome!</h2>
+                    <p>Record a phrase, listen to it in reverse, and try to mimic it!</p>
+                    <button id="btn-start-game" class="btn-primary">Start Game</button>
+                </div>
+            </section>
+
+            <!-- Stage 2: Record Target -->
+            <section id="stage-record-target" class="stage hidden">
+                <h2>Record Your Phrase</h2>
+                <p>Say something simple (Max 10s)</p>
+
+                <div class="timer-container">
+                    <svg class="progress-ring" width="200" height="200">
+                        <circle class="progress-ring__circle" stroke="var(--accent-blue)" stroke-width="8" fill="transparent"
+                            r="90" cx="100" cy="100" />
+                    </svg>
+                    <button id="btn-record-target" class="record-bubble blue">
+                        <span class="icon-mic">🎙️</span>
+                        <span class="label">REC</span>
+                    </button>
+                </div>
+                <p class="status-text">Tap to Record</p>
+            </section>
+
+            <!-- Stage 3: Listen & Practice -->
+            <section id="stage-listen" class="stage hidden">
+                <h2>Listen & Learn</h2>
+                <p>Hear how it sounds in reverse.</p>
+
+                <div class="controls-grid">
+                    <button id="btn-play-original" class="btn-action green">
+                        <span>▶ Original</span>
+                    </button>
+                    <button id="btn-play-reverse" class="btn-action purple">
+                        <span>◀ Reverse</span>
+                    </button>
+                </div>
+
+                <div class="divider"></div>
+                <p>Ready to try?</p>
+                <button id="btn-go-to-record-attempt" class="btn-primary">I'm Ready to Mimic</button>
+            </section>
+
+            <!-- Stage 4: Record Attempt -->
+            <section id="stage-record-attempt" class="stage hidden">
+                <h2>Mimic the Reverse!</h2>
+                <p>Record yourself making the weird sounds.</p>
+
+                <div class="timer-container">
+                    <svg class="progress-ring" width="200" height="200">
+                        <circle class="progress-ring__circle" stroke="var(--accent-red)" stroke-width="8" fill="transparent"
+                            r="90" cx="100" cy="100" />
+                    </svg>
+                    <button id="btn-record-attempt" class="record-bubble red">
+                        <span class="icon-mic">🎙️</span>
+                        <span class="label">REC</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Stage 5: Results -->
+            <section id="stage-results" class="stage hidden">
+                <h2>The Moment of Truth</h2>
+
+                <div class="results-grid">
+                    <div class="result-card">
+                        <h3>Your Attempt (Reversed)</h3>
+                        <p>Does this sound like the original?</p>
+                        <button id="btn-play-attempt-reversed" class="btn-action green big">
+                            <span>◀ Play Magic</span>
+                        </button>
+                    </div>
+
+                    <div class="mini-controls">
+                        <button id="btn-play-attempt-original" class="btn-small">Hear Your Attempt (Normal)</button>
+                        <button id="btn-play-target-original" class="btn-small">Hear Original Target</button>
+                    </div>
+                </div>
+
+                <button id="btn-restart" class="btn-secondary">Play Again</button>
+            </section>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
